@@ -14,3 +14,12 @@ def insert_newlines(string, every=64):
     return '\n'.join(lines)
 
 print(insert_newlines(str(record.seq)))
+
+def accessncbi(x):
+    Entrez.email = "aidenclamp@gmail.com"  # Need to tell NCBI your email address
+    handle = Entrez.efetch(db="nucleotide", id=x, rettype="gb", retmode="text")
+    record = SeqIO.read(handle, "genbank")
+    handle.close()
+    return record.id, record.description
+
+print(accessncbi("EU490707"))
