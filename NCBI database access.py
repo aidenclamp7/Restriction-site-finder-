@@ -6,7 +6,7 @@ def accessncbi(x):
     handle = Entrez.efetch(db="nucleotide", id=x, rettype="gb", retmode="text")
     record = SeqIO.read(handle, "genbank")
     handle.close()
-    return print("ID {}, \nDescription {}, \nSequence \n{}".format(record.id, record.description,insert_newlines(str(record.seq))))
+    return record.id, record.description, record.seq
 
 def insert_newlines(string, every=100):
     lines = []
@@ -14,4 +14,7 @@ def insert_newlines(string, every=100):
         lines.append(string[i:i+every])
     return '\n'.join(lines)
 
-accessncbi("EU490707")
+def findseq(x):
+    print("ID {}, \nDescription {}, \nDNA Sequence \n{}".format(accessncbi(record.id, record.description, record.seq)))
+
+findseq(accessncbi("EU490707"))
