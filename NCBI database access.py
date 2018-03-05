@@ -20,6 +20,6 @@ def accessncbi(x):
     handle = Entrez.efetch(db="nucleotide", id=x, rettype="gb", retmode="text")
     record = SeqIO.read(handle, "genbank")
     handle.close()
-    return record.id, record.description
+    return print("ID {}, \nDescription {}, \nSequence {}".format(record.id, record.description, insert_newlines(str(record.seq))))
 
-print(accessncbi("EU490707"))
+accessncbi("EU490707")
