@@ -6,7 +6,8 @@ def accessncbi(x):
     handle = Entrez.efetch(db="nucleotide", id=x, rettype="gb", retmode="text")
     record = SeqIO.read(handle, "genbank")
     handle.close()
-    return record.seq, print("ID {}, \nDescription {}, \nDNA Sequence \n{}".format(record.id, record.description, insert_newlines(str(record.seq))))
+    return record.seq, print("ID {}, \nDescription {}, \nDNA Sequence \n{}".format(record.id, record.description,
+                                                                                   insert_newlines(str(record.seq))))
 
 
 def insert_newlines(string, every=100):
@@ -17,11 +18,14 @@ def insert_newlines(string, every=100):
 
 
 def findRS(x):
-    accessncbi(x)
-    y = record.seq
-    if "" not in y:
+    a = accessncbi(x)
+    if "A" not in str(a[0]):
         return print("True")
     else:
         print("False")
 
 findRS("EU490707")
+
+RSlist = ["AAA","TTTT","CCCC","GGGG"]
+print(RSlist)
+
