@@ -28,10 +28,10 @@ def findRS(x):
     lst = []
     for i in RSlist:
         if i not in str(a[2]):
-            lst.append(True)
+            lst.append("Not Found")
         else:
-            lst.append(False)
-    print(lst)
+            lst.append("Found")
+    print('\n'.join('{}:{}'.format(*k) for k in enumerate(lst, 1)))
 
 def masterfunction(x):
     findseq(x)
