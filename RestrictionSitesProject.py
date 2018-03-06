@@ -1,7 +1,10 @@
 from Bio import Entrez
 from Bio import SeqIO
 
-RSlist = ["AAA","TTTT","CCCC","GGGG","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+RSlist = ["GAATTC","GGATCC","AAGCTT","TCGA","GCGGCCGC", "GANTC",
+          "GATC", "CAGCTG" , "CCCGGG", "GGCC", "GACGC", "AGCT",
+          "GATATC", "GGTACC","CTGCAG", "GAGCTC", "GTCGAC","AGYACT",
+          "ACTACT","ACTAGT","GCATGC","AGGCCT","TCTAGA"]
 
 def accessncbi(x):
     Entrez.email = "aidenclamp@gmail.com"  # Need to tell NCBI your email address
@@ -22,11 +25,13 @@ def insert_newlines(string, every=100):
 
 def findRS(x):
     a = accessncbi(x)
+    lst = []
     for i in RSlist:
         if i not in str(a[2]):
-            return print("True")
+            lst.append(True)
         else:
-            return print("False")
+            lst.append(False)
+    print(lst)
 
 def masterfunction(x):
     findseq(x)
