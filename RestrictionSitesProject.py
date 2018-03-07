@@ -35,22 +35,28 @@ def findRS(x):
             lst.append(i)
     print('\n'.join('{}:{}'.format(*k) for k in enumerate(lst, 1)))
 
-parser = argparse.ArgumentParser(description='Process some integer.')
-parser.add_argument('integers', metavar='N', type=int, nargs='+',
-                    help='an integer for the accumulator')
-parser.add_argument('--sum', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default:findthe max')
+parser = argparse.ArgumentParser(description='A program that can find Restriction Sites in a DNA sequence.')
+parser.add_argument('NCBI_ID_number', type=str, action="store",
+                    help='This is an NCBI ID number e.g. EU490707')
 
 args = parser.parse_args()
-print(args.accumulate(args.integers))
+
+def test1(x):
+    if len(x)==8:
+        return True
+    else:
+        return False, print("Please use a valid NCBI ID number. "
+                            "A valid NCBI number has two letters followed by "
+                            "six numbers e.g. EU490707")
 
 def masterfunction(x):
-    findseq(x)
-    findRS(x)
+    b = test1(x)
+    if b == True:
+        findseq(x)
+        findRS(x)
+    else:
+        return
 
-
-
+masterfunction(args.NCBI_ID_number)
 #masterfunction("EU490707")
 #masterfunction("LZ221631")
-#masterfunction("NM_057750")
