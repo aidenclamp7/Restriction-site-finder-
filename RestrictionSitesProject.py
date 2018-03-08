@@ -13,7 +13,7 @@ RSlist = ["GAATTC","GGATCC","AAGCTT","TCGA","GCGGCCGC", "GANTC",
 # The function will return a sequence records id, description and DNA sequence
 # This function was made with help from the Biopython documentation
 def accessncbi(x,y):
-    Entrez.email = y  # y is where the email adress is used because you eed to tell NCBI your email address
+    Entrez.email = y  # y is where the email adress is used because you need to tell NCBI your email address
     handle = Entrez.efetch(db="nucleotide", id=x, rettype="gb", retmode="text") # x is where the NCBI ID is used
     record = SeqIO.read(handle, "genbank")
     handle.close()
