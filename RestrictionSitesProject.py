@@ -1,3 +1,6 @@
+# Restriction Site Finder by Aiden Clamp    Student ID: B7024932
+# This is program that can find the restriction sites in a sequence of DNA and then return them to the user
+
 from Bio import Entrez
 from Bio import SeqIO
 import argparse
@@ -46,7 +49,7 @@ def findRS(x,y):
             lst.append(i) # This adds found RS to the list
     print('\n'.join('{}:{}'.format(*k) for k in enumerate(lst, 1))) # This formats and numbers then list of found RS
 
-# The next few lines create a parser and aguments so that the program ca be run of the terminal
+# The next few lines create a parser and arguments so that the program ca be run of the terminal
 # It has a description to say what the program does
 # There are two arguments for the program.
 # The two arguments form the inputs for most of the functions in the program
@@ -147,5 +150,5 @@ def masterfunction(x,y):
 masterfunction(args.NCBI_ID_number, args.Email_Adress)
 
 # This is some example data if the user wishes to run the scrip in the python editor instead of the terminal
-#masterfunction("EU490707", "example@email.com")
-#masterfunction("LZ221631", "example@email.com")
+# masterfunction("EU490707", "example@email.com")
+# masterfunction("LZ221631", "example@email.com")
