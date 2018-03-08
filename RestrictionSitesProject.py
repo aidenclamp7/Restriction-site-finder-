@@ -47,27 +47,31 @@ def test1(x,y):
     if len(x)==8:
         return True
     else:
-        return False, print("Please use a valid NCBI ID number.")
+        return False
+
 def test2(x,y):
     if "@" in y:
         return True
     else:
-        return False, print("Please use a valid email adress")
+        return False
+
 def test3(x,y):
     if "." in y:
         return True
     else:
-        return False, print("Please use a valid email adress")
+        return False
+
 def test4(x,y):
     if y.find("@") < y.find("."):
         return True
     else:
-        return False, print("Please use a valid email adress")
+        return False
+
 def test5(x,y):
-    if " " in y:
+    if " " not in y:
         return True
     else:
-        return False, print("Please use a valid email adress")
+        return False
 
 def masterfunction(x,y):
     b = test1(x,y)
@@ -77,18 +81,33 @@ def masterfunction(x,y):
     f = test5(x,y)
     if b == True:
         pass
+    else:
+        print("Please use a valid NCBI ID number \nUse the --help command for details")
+        exit()
     if c == True:
         pass
+    else:
+        print("Please use a valid email adress \nUse the --help command for details")
+        exit()
     if d == True:
         pass
+    else:
+        print("Please use a valid email adress \nUse the --help command for details")
+        exit()
     if e == True:
         pass
+    else:
+        print("Please use a valid email adress \nUse the --help command for details")
+        exit()
     if f == True:
         pass
     else:
-        return print("Use the --help command for details")
+        print("Please use a valid email adress \nUse the --help command for details")
+        exit()
+
     findseq(x,y)
     findRS(x,y)
+
 
 masterfunction(args.NCBI_ID_number, args.Email_Adress)
 #masterfunction("EU490707")
